@@ -385,6 +385,11 @@
     "title": "Learn To Fly"
   },
   {
+    "link": "projects/MagmaDash!/index.html",
+    "imgSrc": "projects/MagmaDash!/MagmaDash!.png",
+    "title": "Magma Dash!"
+  },
+  {
     "link": "projects/mario/index.html",
     "imgSrc": "projects/mario/Theme/Mario.gif",
     "title": "Mario"
