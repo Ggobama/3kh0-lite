@@ -124,6 +124,11 @@
     "imgSrc": "projects/circlo/img/download.png",
     "title": "circlO"
   },
+    {
+    "link": "projects/clusterrush/index.html",
+    "imgSrc": "projects/clusterrush/splash.png",
+    "title": "ClusterRush"
+  },
   {
     "link": "projects/connect3/index.html",
     "imgSrc": "projects/connect3/connect3.png",
