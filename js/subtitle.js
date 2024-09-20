@@ -1,6 +1,6 @@
 function getRandomGreeting() {
   var greetings = [
-    "Micheal Lutz Is <u>Wierd</u>",
+    "Micheal Lutz Is WIERD",
   ];
   var randomIndex = Math.floor(Math.random() * greetings.length);
   return greetings[randomIndex];
