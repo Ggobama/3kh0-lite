@@ -1,6 +1,8 @@
 function getRandomGreeting() {
   var greetings = [
-    "Micheal Lutz Is WIERD",
+    "Micheal Alexander Lutz Is WEIRD",
+    "Fortnite Is The Best Game",
+    
   ];
   var randomIndex = Math.floor(Math.random() * greetings.length);
   return greetings[randomIndex];
