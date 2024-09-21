@@ -12,8 +12,8 @@ function getRandomGreeting() {
     "I Love Red 40 Fridays",
     "Don't forget to play Magma Dash!",
     "Oh, back so soon I see",
-    "Whats the time? Its OHIO time"'
-    "Gen alpha is cooked"'
+    "Whats the time? Its OHIO time",
+    "Gen alpha is cooked",
 
     
     
