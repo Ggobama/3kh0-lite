@@ -8,7 +8,7 @@ function getRandomGreeting() {
     "W's In The chat",
     "Happy Early Birthday",
     "1 is fun",
-    ""You can't get ahead when you're chased by the dead"",
+    "You can't get ahead when you're chased by the dead",
     "I Love Red 40 Fridays",
     "Don't forget to play Magma Dash!",
     "Oh, back so soon I see",
