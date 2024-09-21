@@ -1,149 +1,286 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <title>Projects | 3kh0</title>
-    <meta name="keywords" content="front-end web developer, unblocked, games, google sites, unblocked games mom, ublocked, code, coding, programmer, development, javascript, jquery, bootstrap, sass, less, git" />
-    <meta property="og:title" content="Welcome to 3kh0 lite, a lightweight, fast, and clean game site." />
-    <meta property="og:site_name" content="3kh0.github.io" />
-    <meta property="og:description" content="Welcome to 3kh0 lite, a lightweight, fast, and clean game site." />
-    <meta name="description" content="Welcome to 3kh0 lite, a lightweight, fast, and clean game site." />
-    <meta name="author" content="3kh0" />
+
+
+<head>
+    <title>Cosmic Games | 3kh0</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Explore a universe of games at 3kh0 lite." />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="shortcut-icon" href="/favicon.ico" />
-    <script src="/js/main.js"></script>
     <style>
-      p {
-        text-align: center;
-        max-width: 600px;
-        margin: 20px auto;
-      }
-      button {
-        cursor: pointer;
-        background-color: #22c55e;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        border-radius: 20px;
-        margin-top: 20px;
-      }
-      .game-link {
-        height: 400px;
-        width: 300px;
-        text-decoration: none;
-      }
-      .game-tile {
-        background-color: #00d9ff;
-        height: 400px;
-        width: 300px;
-        border-radius: 30px;
-      }
-      .game-icon {
-        border-radius: 30px;
-        width: 300px;
-        height: 300px;
-      }
-      .game-title {
-        font-size: 30px;
-        font-weight: bold;
-        color: #000000;
-        text-align: center;
-        margin: auto;
-      }
-      .flex-container {
-        display: flex;
-        flex-direction: row;
-        order: 0;
-        flex-grow: 0;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-      }
-      .container {
-        padding: 10px;
-      }
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
+        /* Cosmic background with animated nebula and stars */
+        body {
+            background: linear-gradient(to bottom, #000428, #004e92); /* Cosmic gradient */
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
-        100% {
-          transform: rotate(360deg);
+
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://astro101.wwu.edu/wallpaper/4k_04.jpg') center/cover;
+            filter: blur(10px) brightness(0.7);
+            z-index: -2;
+            animation: backgroundMovement 60s infinite alternate linear;
         }
-      }
+
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            z-index: -1;
+            opacity: 0.3;
+            animation: twinklingStars 5s infinite alternate;
+        }
+
+
+        @keyframes backgroundMovement {
+            from {
+                background-position: top left;
+            }
+            to {
+                background-position: bottom right;
+            }
+        }
+
+
+        @keyframes twinklingStars {
+            from {
+                opacity: 0.3;
+            }
+            to {
+                opacity: 0.6;
+            }
+        }
+
+
+        /* Cosmic glowing title */
+        h1 {
+            font-size: 4em;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 40px rgba(0, 255, 255, 0.7),
+                0 0 60px rgba(255, 0, 255, 0.6);
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+
+        @keyframes pulseGlow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.6);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 60px rgba(0, 255, 255, 0.9), 0 0 80px rgba(255, 0, 255, 0.8);
+            }
+        }
+
+
+        /* Input box with cosmic glow */
+        input {
+            width: 50%;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 30px;
+            margin: 20px auto;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            border: none;
+            background-color: rgba(0, 0, 50, 0.8);
+            color: white;
+            animation: glowPulse 2s infinite alternate;
+        }
+
+
+        @keyframes glowPulse {
+            from {
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+            }
+        }
+
+
+        /* Flex container to ensure grid alignment */
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap; /* Ensure game tiles wrap and form a grid */
+            justify-content: center; /* Center align tiles */
+            padding: 20px;
+        }
+
+
+        /* Game tile */
+        .game-tile {
+            background-color: rgba(147, 147, 147, 0.8);
+            border-radius: 30px;
+            width: 300px; /* Set a consistent width for game tiles */
+            height: 400px; /* Set a consistent height */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 15px; /* Increased margin for more space between tiles */
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+
+        .game-tile:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 1);
+        }
+
+
+        .game-icon {
+            height: 70%;
+            max-width: 90%;
+            border-radius: 20px; /* Rounded images */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+        }
+
+
+        .game-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7);
+        }
+
+
+        /* Button styles */
+        button {
+            background-color: #b625cc;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 20px #ff00ff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px #ff00ff;
+        }
+
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        /* Back to top button */
+        #back-to-top {
+            background-color: #b625cc;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #ff00ff;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            cursor: pointer;
+        }
     </style>
-  </head>
-  <body style="background-color: #121212; color: #ffffff; font-family: sans-serif; text-decoration: none; text-align: center;">
-    <h1 style="font-size: 3em; text-align: center;">Projects</h1>
-    <input type="text" id="search" onkeyup="searchGames()" placeholder="Search for games..." style="width: 100%; font-size: 18px; padding: 6px 20px; margin: auto; border-radius: 30px; max-width: 600px; margin-bottom: 10px;" />
-    <div id="loader" style="display: block; border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 120px; height: 120px; animation: spin 0.3s linear infinite; margin: auto; margin-top: 1rem;"></div>
+</head>
+
+
+<body>
+    <h1>Games</h1>
+    <input type="text" id="search" onkeyup="searchGames()" placeholder="Search for games..." />
+
+
     <div id="game-container" class="flex-container"></div>
-    <p class="text-center">
-      <a href="/index.html" style="text-decoration: none;">
-        <button style="cursor: pointer; background-color: #b625cc; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 20px; margin-top: 5px;">
-          Go to the homepage
-        </button>
-      </a>
+
+
+    <p>
+        <a href="/index.html" style="text-decoration: none;">
+            <button>Go to the homepage</button>
+        </a>
     </p>
-    <button id="back-to-top" style="display: none; position: fixed; bottom: 20px; right: 20px;">Back to top</button>
+    <button id="back-to-top" style="display: none;">🔝</button>
+
+
     <script>
-      let games = [];
-      fetch("config/games.json")
-      .then((response) => response.json())
-      .then((data) => {
-        games = data;
-        const container = document.getElementById("game-container");
-        data.forEach((project) => {
-          const game = document.createElement("a");
-          game.href = project.link;
-            game.className = "game-link container";
-            game.innerHTML = `
-            <div class="game-tile">
-              <img class="game-icon" src="${project.imgSrc}" alt="icon" />
-              <p class="game-title">${project.title}</p>
-              </div>`;
-              container.appendChild(game);
-          });
-          document.getElementById("loader").style.display = "none";
-        })
-        .catch((error) => console.error("Error:", error));
+        let games = [];
+        fetch("config/games.json")
+            .then((response) => response.json())
+            .then((data) => {
+                games = data;
+                const container = document.getElementById("game-container");
+                data.forEach((project) => {
+                    const game = document.createElement("a");
+                    game.href = project.link;
+                    game.className = "game-link";
+                    game.innerHTML = `
+                        <div class="game-tile">
+                            <img class="game-icon" src="${project.imgSrc}" alt="icon" loading="lazy" />
+                            <p class="game-title">${project.title}</p>
+                        </div>`;
+                    container.appendChild(game);
+                });
+            })
+            .catch((error) => console.error("Error:", error));
 
-      function searchGames() {
-        const input = document.getElementById("search");
-        const filter = input.value.toUpperCase();
-        const container = document.getElementById("game-container");
-        container.innerHTML = "";
-        games
-          .filter((game) => game.title.toUpperCase().includes(filter))
-          .forEach((project) => {
-            const game = document.createElement("a");
-            game.href = project.link;
-            game.className = "game-link container";
-            game.innerHTML = `
-            <div class="game-tile">
-              <img class="game-icon" src="${project.imgSrc}" alt="icon" loading="lazy" />
-              <p class="game-title">${project.title}</p>
-              </div>`;
-            container.appendChild(game);
-          });
+
+        function searchGames() {
+            const input = document.getElementById("search");
+            const filter = input.value.toUpperCase();
+            const container = document.getElementById("game-container");
+            container.innerHTML = "";
+            games
+                .filter((game) => game.title.toUpperCase().includes(filter))
+                .forEach((project) => {
+                    const game = document.createElement("a");
+                    game.href = project.link;
+                    game.className = "game-link";
+                    game.innerHTML = `
+                        <div class="game-tile">
+                            <img class="game-icon" src="${project.imgSrc}" alt="icon" loading="lazy" />
+                            <p class="game-title">${project.title}</p>
+                        </div>`;
+                    container.appendChild(game);
+                });
         }
-        const backToTopButton = document.getElementById('back-to-top');
+
+
         window.onscroll = function () {
-          if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-            backToTopButton.style.display = "block";
-          } else {
-          backToTopButton.style.display = "none";
-        }
-      };
+            const backToTopButton = document.getElementById('back-to-top');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
 
-      backToTopButton.onclick = function () {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      };
+
+        document.getElementById('back-to-top').onclick = function () {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
     </script>
-  </body>
+</body>
+
+
 </html>
+
+
