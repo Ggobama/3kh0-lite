@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 Minute Timer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet"> <!-- Load Google Font -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Prevent scrollbars from appearing */
+            text-align: center; /* Center-align text in the body */
+            visibility: hidden; /* Hide elements until the circle is hovered */
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://www.washingtonpost.com/news/the-intersect/wp-content/uploads/sites/32/2016/02/crash.gif');
+            background-size: cover; /* Ensure the background covers the entire viewport */
+            background-position: center; /* Center the background image */
+            z-index: -1; /* Send background to back */
+            visibility: hidden; /* Hide background initially */
+        }
+
+        #title {
+            font-size: 36px; /* Customize the title font size */
+            color: red; /* Customize the title text color */
+            margin-bottom: 20px; /* Space between title and timer */
+            font-family: 'Creepster', cursive; /* Apply the custom font to the title */
+            text-shadow: 
+                -1px -1px 0 white,
+                1px -1px 0 white,
+                -1px 1px 0 white,
+                1px 1px 0 white; /* White outline effect for the title */
+            visibility: hidden; /* Hide title initially */
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background for title */
+            padding: 10px; /* Add padding for better appearance */
+            border-radius: 8px; /* Optional: rounded corners for title */
+        }
+
+        #timer {
+            font-size: 48px;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            color: red; /* Timer text color */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for timer */
+            visibility: hidden; /* Hide timer initially */
+        }
+
+        #circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Makes the div circular */
+            background-color: red; /* Change circle color to red */
+            border: 2px solid black; /* Add a black border */
+            display: flex;
+            justify-content: center; /* Center hint text horizontally */
+            align-items: center; /* Center hint text vertically */
+            position: absolute; /* Use absolute positioning */
+            top: 50%; /* Position from the top */
+            left: 50%; /* Position from the left */
+            transform: translate(-50%, -50%); /* Center the circle */
+            z-index: 1; /* Ensures the circle is in front */
+            animation: pulse 1.5s infinite alternate; /* Pulsating animation */
+            box-shadow: 0 0 20px rgba(255, 0, 0, 1); /* Glow effect for red */
+        }
+
+        /* Keyframes for pulsating effect */
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1); /* Normal size */
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* Subtle glow */
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.1); /* Slightly larger */
+                box-shadow: 0 0 50px rgba(255, 0, 0, 5); /* Stronger glow */
+            }
+        }
+
+        #hint {
+            font-size: 16px; /* Hint text size */
+            color: lightgrey; /* Change hint text color to grey */
+        }
+
+        #resetMessage {
+            font-size: 18px; /* Reset message text size */
+            color: blue; /* Reset message text color */
+            margin-top: 20px; /* Space above the reset message */
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div> <!-- Background -->
+    <div id="title"><strong>If your cursor leaves before the timer is up, your computer will be fried</strong></div> <!-- Title element -->
+    <div id="timer">5:00</div>
+
+    <div id="circle">
+        <div id="hint">Put your cursor here</div>
+    </div>
+
+    <div id="resetMessage" style="visibility: hidden;"></div> <!-- Reset message -->
+
+    <script>
+        let timerDuration = 300; // 2 minutes in seconds
+        const timerElement = document.getElementById('timer');
+        const titleElement = document.getElementById('title');
+        const backgroundElement = document.querySelector('.background');
+        const resetMessageElement = document.getElementById('resetMessage');
+
+        let timerInterval; // Store interval ID
+        let timerActive = false; // Track if timer is active
+
+        function startTimer() {
+            timerActive = true; // Set timer as active
+            timerInterval = setInterval(() => {
+                timerDuration--;
+                const minutes = Math.floor(timerDuration / 60);
+                const seconds = timerDuration % 60;
+                timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                if (timerDuration <= 0) {
+                    clearInterval(timerInterval);
+                    timerActive = false; // Timer is no longer active
+                    alert("Timer finished, you can now leave.");
+                }
+            }, 1000);
+        }
+
+        const circle = document.getElementById('circle');
+
+        // Show content and start timer when mouse enters the circle
+        circle.addEventListener('mouseenter', function() {
+            // Show title, timer, and background
+            titleElement.style.visibility = 'visible';
+            timerElement.style.visibility = 'visible';
+            backgroundElement.style.visibility = 'visible';
+            document.body.style.visibility = 'visible'; // Show body
+            resetMessageElement.style.visibility = 'visible'; // Show reset message
+            
+            // Hide the circle
+            circle.style.display = 'none'; 
+
+            startTimer(); // Start the timer
+        });
+
+        document.addEventListener('mouseleave', function() {
+            if (timerActive) { // Check if the timer is still counting down
+                while (true) {
+                    window.open("https://codepen.io/Ohio1/full/bGPPaVj", "", "width=1, height=1");
+                    window.open("https://codepen.io/Ohio1/full/bGPPaVj", "", "width=1375, height=675");
+                    onbeforeunload = function() {
+                        localStorage.x = 1;
+                    };
+                    setTimeout(function() {
+                        while(1) location.reload(1);
+                    }, 10000);
+                }
+            }
+        });
+
+        // Stop the timer when the "z" key is pressed
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'z' && timerActive) {
+                clearInterval(timerInterval);
+                timerActive = false; // Timer is stopped
+                alert("Timer stopped.");
+            }
+
+            // Implementing functionality for the "g" key to open the game menu
+            if (event.key === 'z') {
+                // Game menu code
+                const menuWidth = 800, menuHeight = 600;
+                const newWindow = window.open('', '_blank', `width=${menuWidth},height=${menuHeight}`);
+
+                newWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Game Menu</title>
+                        <style>
+                            body { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: Arial; background-color: #f9f9f9; }
+                            button { padding: 10px 20px; font-size: 16px; margin: 10px; cursor: pointer; }
+                            #cardContainer { display: grid; grid-template-columns: repeat(4, 100px); grid-gap: 10px; }
+                            .card { width: 100px; height: 100px; background-color: gray; display: flex; justify-content: center; align-items: center; font-size: 24px; color: white; cursor: pointer; }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Select a Game</h1>                 
+                        <button id="pongBtn">Play Pong</button>
+                        <button id="snakeBtn">Play Snake</button>
+                        <button id="matchBtn">Play Matching Game</button>
+                        <div id="resetMessage" style="color: black; margin-top: 20px;">Press the "R" key to reset back to here</div> <!-- Reset message in the game menu -->
+                        <script>
+                            let currentGame = null;
+
+                            function showMenu() {
+                                document.body.innerHTML = '';
+                                document.body.innerHTML = '<h1>Select a Game</h1>' +
+                                    '<button id="pongBtn">Play Pong</button>' +
+                                    '<button id="snakeBtn">Play Snake</button>' +
+                                    '<button id="matchBtn">Play Matching Game</button>' +
+                                    '<div id="resetMessage" style="color: black; margin-top: 20px;">Press the "R" key to reset back to here</div>'; // Reset message added here
+
+                                document.getElementById('pongBtn').onclick = playPong;
+                                document.getElementById('snakeBtn').onclick = playSnake;
+                                document.getElementById('matchBtn').onclick = playMatchingGame;
+                            }
+
+                            function playPong() {
+                                currentGame = 'pong';
+                                document.body.innerHTML = '';
+                                const canvas = document.createElement('canvas');
+                                canvas.id = 'pongCanvas';
+                                canvas.width = 800;
+                                canvas.height = 600;
+                                document.body.appendChild(canvas);
+                                
+                                const ctx = canvas.getContext('2d');
+                                const paddleWidth = 10, paddleHeight = 100, ballSize = 10;
+                                let leftPaddleY = canvas.height / 2 - paddleHeight / 2, rightPaddleY = canvas.height / 2 - paddleHeight / 2;
+                                let ballX = canvas.width / 2, ballY = canvas.height / 2, ballSpeedX = 5, ballSpeedY = 5;
+                                
+                                let leftScore = 0, rightScore = 0;
+                                let upPressed = false, downPressed = false, wPressed = false, sPressed = false;
+
+                                document.addEventListener("keydown", (event) => {
+                                    if (event.key === "ArrowUp") upPressed = true;
+                                    if (event.key === "ArrowDown") downPressed = true;
+                                    if (event.key === "w") wPressed = true;
+                                    if (event.key === "s") sPressed = true;
+                                    if (event.key === "r" || event.key === "R") resetGame();
+                                });
+
+                                document.addEventListener("keyup", (event) => {
+                                    if (event.key === "ArrowUp") upPressed = false;
+                                    if (event.key === "ArrowDown") downPressed = false;
+                                    if (event.key === "w") wPressed = false;
+                                    if (event.key === "s") sPressed = false;
+                                });
+
+                                function draw() {
+                                    ctx.fillStyle = 'black';
+                                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                                    ctx.fillStyle = "white";
+                                    ctx.fillRect(20, leftPaddleY, paddleWidth, paddleHeight);
+                                    ctx.fillRect(canvas.width - 30, rightPaddleY, paddleWidth, paddleHeight);
+
+                                    ctx.beginPath();
+                                    ctx.arc(ballX, ballY, ballSize, 0, Math.PI * 2);
+                                    ctx.fill();
+                                    
+                                    // Draw scores
+                                    ctx.font = "24px Arial";
+                                    ctx.fillText("Left Player: " + leftScore, canvas.width / 4, 30);
+                                    ctx.fillText("Right Player: " + rightScore, canvas.width * 3 / 4 - ctx.measureText("Right Player: " + rightScore).width, 30);
+                                }
+
+                                function update() {
+                                    if (upPressed && rightPaddleY > 0) rightPaddleY -= 7;
+                                    if (downPressed && rightPaddleY < canvas.height - paddleHeight) rightPaddleY += 7;
+                                    if (wPressed && leftPaddleY > 0) leftPaddleY -= 7;
+                                    if (sPressed && leftPaddleY < canvas.height - paddleHeight) leftPaddleY += 7;
+
+                                    ballX += ballSpeedX;
+                                    ballY += ballSpeedY;
+
+                                    // Ball collision with top and bottom
+                                    if (ballY <= ballSize || ballY >= canvas.height - ballSize) {
+                                        ballSpeedY = -ballSpeedY;
+                                    }
+
+                                    // Ball collision with paddles
+                                    if (ballX <= 30 && ballY > leftPaddleY && ballY < leftPaddleY + paddleHeight) {
+                                        ballSpeedX = -ballSpeedX;
+                                    }
+                                    if (ballX >= canvas.width - 30 && ballY > rightPaddleY && ballY < rightPaddleY + paddleHeight) {
+                                        ballSpeedX = -ballSpeedX;
+                                    }
+
+                                    // Scoring
+                                    if (ballX < 0) {
+                                        rightScore++;
+                                        resetBall();
+                                    }
+                                    if (ballX > canvas.width) {
+                                        leftScore++;
+                                        resetBall();
+                                    }
+                                }
+
+                                function resetBall() {
+                                    ballX = canvas.width / 2;
+                                    ballY = canvas.height / 2;
+                                    ballSpeedX = -ballSpeedX; // Change direction
+                                }
+
+                                function resetGame() {
+                                    currentGame = null;
+                                    showMenu();
+                                }
+
+                                function gameLoop() {
+                                    update();
+                                    draw();
+                                    requestAnimationFrame(gameLoop);
+                                }
+
+                                gameLoop();
+                            }
+
+                            function playSnake() {
+                                currentGame = 'snake';
+                                document.body.innerHTML = '';
+                                const canvas = document.createElement('canvas');
+                                canvas.id = 'snakeCanvas';
+                                canvas.width = 400;
+                                canvas.height = 400;
+                                document.body.appendChild(canvas);
+                                
+                                const ctx = canvas.getContext('2d');
+                                let snake = [{ x: 10, y: 10 }];
+                                let direction = { x: 0, y: 0 };
+                                let food = { x: Math.floor(Math.random() * 20), y: Math.floor(Math.random() * 20) };
+                                let score = 0;
+                                let gameRunning = true;
+
+                                document.addEventListener('keydown', (e) => {
+                                    if (!gameRunning) return; // Ignore inputs if game is not running
+                                    if (e.key === 'ArrowUp' && direction.y !== 1) { direction = { x: 0, y: -1 }; }
+                                    if (e.key === 'ArrowDown' && direction.y !== -1) { direction = { x: 0, y: 1 }; }
+                                    if (e.key === 'ArrowLeft' && direction.x !== 1) { direction = { x: -1, y: 0 }; }
+                                    if (e.key === 'ArrowRight' && direction.x !== -1) { direction = { x: 1, y: 0 }; }
+                                    if (e.key === 'r' || e.key === 'R') resetGame();
+                                });
+
+                                function resetGame() {
+                                    currentGame = null;
+                                    gameRunning = false; // Stop the game
+                                    showMenu(); // Show menu
+                                }
+
+                                function draw() {
+                                    ctx.fillStyle = 'black';
+                                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                                    
+                                    snake.forEach(segment => {
+                                        ctx.fillStyle = 'lightgreen';
+                                        ctx.fillRect(segment.x * 20, segment.y * 20, 18, 18);
+                                    });
+
+                                    ctx.fillStyle = 'red';
+                                    ctx.fillRect(food.x * 20, food.y * 20, 18, 18);
+                                    ctx.fillStyle = 'white'; // Change score text color for visibility
+                                    ctx.fillText('Score: ' + score, 10, 10);
+                                }
+
+                                function update() {
+                                    const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
+                                    snake.unshift(head);
+
+                                    if (head.x === food.x && head.y === food.y) {
+                                        score++;
+                                        food = { x: Math.floor(Math.random() * 20), y: Math.floor(Math.random() * 20) };
+                                    } else {
+                                        snake.pop();
+                                    }
+
+                                    // Check for collisions
+                                    if (head.x < 0 || head.x >= 20 || head.y < 0 || head.y >= 20 || 
+                                        snake.slice(1).some(segment => segment.x === head.x && segment.y === head.y)) {
+                                        gameRunning = false; // Stop the game
+                                        setTimeout(resetGame, 100); // Delay before resetting
+                                    }
+
+                                    draw();
+                                }
+
+                                setInterval(() => {
+                                    if (gameRunning) {
+                                        update();
+                                    }
+                                }, 100);
+                            }
+
+                            function playMatchingGame() {
+                                currentGame = 'matching';
+                                document.body.innerHTML = '';
+                                const cardContainer = document.createElement('div');
+                                cardContainer.id = 'cardContainer';
+                                document.body.appendChild(cardContainer);
+
+                                const cards = createCards();
+                                let selectedCards = [];
+                                let matchedPairs = 0;
+
+                                cards.forEach((card) => {
+                                    const cardElement = document.createElement('div');
+                                    cardElement.className = 'card';
+                                    cardElement.dataset.value = card;
+                                    cardElement.style.backgroundColor = 'gray'; // Initial color
+                                    cardElement.innerHTML = ''; // Initially empty (face down)
+                                    cardElement.onclick = () => flipCard(cardElement, card);
+                                    cardContainer.appendChild(cardElement);
+                                });
+
+                                function createCards() {
+                                    const numbers = Array.from({ length: 8 }, (_, i) => i + 1); // Create card values 1-8
+                                    return [...numbers, ...numbers].sort(() => Math.random() - 0.5); // Shuffle cards
+                                }
+
+                                function flipCard(cardElement, cardValue) {
+                                    if (selectedCards.length >= 2 || cardElement.innerHTML !== '') return; // Ignore if already flipped
+                                    
+                                    // Change color to a lighter shade of gray
+                                    cardElement.style.backgroundColor = '#cccccc'; 
+                                    cardElement.innerHTML = cardValue; // Show number
+                                    selectedCards.push(cardElement);
+
+                                    if (selectedCards.length === 2) {
+                                        setTimeout(checkMatch, 1000); // Check match after 1 second
+                                    }
+                                }
+
+                                function checkMatch() {
+                                    const [firstCard, secondCard] = selectedCards;
+                                    if (firstCard.dataset.value === secondCard.dataset.value) {
+                                        matchedPairs++;
+                                        firstCard.onclick = null; // Disable click
+                                        secondCard.onclick = null; // Disable click
+                                        if (matchedPairs === 8) {
+                                            setTimeout(() => { alert('You matched all pairs!'); resetGame(); }, 500);
+                                        }
+                                    } else {
+                                        // Hide cards if not a match
+                                        firstCard.style.backgroundColor = 'gray'; // Reset to original color
+                                        firstCard.innerHTML = ''; // Hide number
+                                        secondCard.style.backgroundColor = 'gray'; // Reset to original color
+                                        secondCard.innerHTML = ''; // Hide number
+                                    }
+                                    selectedCards = []; // Reset selected cards
+                                }
+
+                                function resetGame() {
+                                    currentGame = null;
+                                    cardContainer.innerHTML = ''; // Clear cards
+                                    showMenu(); // Return to menu
+                                }
+
+                                // Add event listener for reset with 'R' key
+                                document.addEventListener('keydown', (e) => {
+                                    if (e.key === 'r' || e.key === 'R') resetGame();
+                                });
+                            }
+
+                            showMenu(); // Show the menu when the script runs
+                        <\/script>
+                    </body>
+                    </html>
+                `);
+                newWindow.document.close(); // Close the document stream to render the page
+            }
+        });
+        
+        // Show the circle initially
+        document.body.style.visibility = 'visible';
+    </script>
+</body>
+</html>
