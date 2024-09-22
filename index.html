@@ -39,12 +39,12 @@
             filter: blur(10px);
             z-index: -2;
             opacity: 10;
-            animation: backgroundMove 30s linear infinite;
+            animation: backgroundZoom 60s linear infinite alternate;
         }
 
-        @keyframes backgroundMove {
-            0% { background-position: center; }
-            100% { background-position: 100% 0; }
+        @keyframes backgroundZoom {
+            0% { background-size: 100%; }
+            100% { background-size: 200%; }
         }
 
         h1 {
@@ -87,7 +87,7 @@
         }
 
         button {
-            background-color: rgba(182, 37, 204, 0.8); /* Semi-transparent button */
+            background-color: rgba(182, 37, 204, 0.35); /* Semi-transparent button */
             border: none;
             color: white;
             padding: 20px 40px; /* Increased padding */
