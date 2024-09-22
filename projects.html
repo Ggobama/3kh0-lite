@@ -161,17 +161,26 @@
         }
 
         #back-to-top {
-            background-color: #b625cc;
-            padding: 10px;
-            border-radius: 50%;
-            box-shadow: 0 0 20px #ff00ff;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: none;
-            cursor: pointer;
-            z-index: 1; /* Ensure it's above all layers */
-        }
+    background-color: rgba(182, 37, 204, 0.9); /* Semi-transparent background */
+    padding: 15px 25px; /* Padding for rectangle shape */
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0 0 20px #ff00ff; /* Glow effect */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    cursor: pointer;
+    z-index: 1; /* Ensure it's above all layers */
+    font-size: 18px; /* Larger font size */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+#back-to-top:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 0 30px #ff00ff; /* Increased glow on hover */
+}
+
+
     </style>
 </head>
 
@@ -186,7 +195,7 @@
             <button>Go to the homepage</button>
         </a>
     </p>
-    <button id="back-to-top" style="display: none;">🔝</button>
+    <button id="back-to-top" style="display: none;">Back to top</button>
 
     <script>
         let games = [];
