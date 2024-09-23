@@ -664,6 +664,11 @@
     "imgSrc": "projects/thisistheonlylevel/thisistheonlylevel.png",
     "title": "This Is The Only Level"
   },
+    {
+    "link": "projects/tinyfishing/index.html",
+    "imgSrc": "projects/tinyfishing/thumb.png",
+    "title": "Tiny Fishing"
+  },
   {
     "link": "projects/tosstheturtle/index.html",
     "imgSrc": "projects/tosstheturtle/tosstheturtle.png",
