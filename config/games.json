@@ -149,6 +149,11 @@
     "imgSrc": "projects/creativekillchamber/creativekillchamber.jpg",
     "title": "Creative Kill Chamber"
   },
+   {
+    "link": "projects/crossyroad/index.html",
+    "imgSrc": "projects/crossyroad/crossyroad.jpg",
+    "title": "Crossy Road"
+  },
   {
     "link": "projects/csgo-clicker/index.html",
     "imgSrc": "projects/csgo-clicker/images/vanguard.png",
