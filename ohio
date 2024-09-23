@@ -183,8 +183,6 @@
                 const newWindow = window.open('', '_blank', `width=${menuWidth},height=${menuHeight}`);
 
                 newWindow.document.write(`
-                    <!DOCTYPE html>
-                    <html>
                     <head>
                         <title>Game Menu</title>
                         <style>
@@ -465,8 +463,6 @@
 
                             showMenu(); // Show the menu when the script runs
                         <\/script>
-                    </body>
-                    </html>
                 `);
                 newWindow.document.close(); // Close the document stream to render the page
             }
