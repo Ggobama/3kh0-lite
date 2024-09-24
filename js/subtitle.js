@@ -1,6 +1,5 @@
 function getRandomGreeting() {
   var greetings = [
-    "Micheal Alexander Lutz Is WEIRD",
     "Fortnite Is The Best Game",
     "Sigma Sigma On The Wall",
     "Who's the skibidiest of them all?",
